@@ -113,28 +113,23 @@ class binarySearchTree {
         return Math.max(this.height(root.left), this.height(root.right))+1
     }
 
-    BredthFirstSearch(){
-        const result = []
+    levelOrder(){
         const queue = []
+        queue.push(this.root)
 
-        if(this.root){
-            queue.push(this.root)
-        }
+        while(queue.length){
+            let curr = queue.shift()
+            console.log(curr.value);
 
-        while(queue.length > 0){
-            const node = queue.shift()
-            result.push(node.data)
-
-            if(node.left !== null){
-                queue.push(node.left)
+            if(curr.left){
+                queue.push(curr.left)
             }
 
-            if(node.right !== null){
-                queue.push(node.right)
+            if(curr.right){
+                queue.push(curr.right)
             }
+            
         }
-
-        return result
     }
 
     inOrder(root){
